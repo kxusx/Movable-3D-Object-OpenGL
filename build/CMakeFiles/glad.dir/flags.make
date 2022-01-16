@@ -4,7 +4,7 @@
 # compile C with /Library/Developer/CommandLineTools/usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I"/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glad/include"
+C_INCLUDES = -I"/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glad/include"
 
 C_FLAGS =  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
 

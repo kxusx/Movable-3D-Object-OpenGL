@@ -4,21 +4,21 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/cocoa_init.m" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/cocoa_joystick.m" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/cocoa_monitor.m" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/cocoa_time.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/cocoa_window.m" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/context.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/context.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/egl_context.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/init.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/input.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/monitor.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/nsgl_context.m" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/osmesa_context.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/posix_thread.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/vulkan.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src/window.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/window.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/cocoa_init.m" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_init.m.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/cocoa_joystick.m" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_joystick.m.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/cocoa_monitor.m" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_monitor.m.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/cocoa_time.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_time.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/cocoa_window.m" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/cocoa_window.m.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/context.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/context.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/egl_context.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/egl_context.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/init.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/init.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/input.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/input.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/monitor.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/monitor.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/nsgl_context.m" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/nsgl_context.m.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/osmesa_context.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/posix_thread.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/posix_thread.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/vulkan.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src/window.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/window.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

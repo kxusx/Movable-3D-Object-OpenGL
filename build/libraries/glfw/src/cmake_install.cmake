@@ -1,4 +1,4 @@
-# Install script for directory: /Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw/src
+# Install script for directory: /Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

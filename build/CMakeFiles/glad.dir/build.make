@@ -62,10 +62,10 @@ RM = /usr/local/Cellar/cmake/3.19.1/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master"
+CMAKE_SOURCE_DIR = "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build"
+CMAKE_BINARY_DIR = "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/glad.dir/depend.make
@@ -78,16 +78,16 @@ include CMakeFiles/glad.dir/flags.make
 
 CMakeFiles/glad.dir/libraries/glad/src/glad.c.o: CMakeFiles/glad.dir/flags.make
 CMakeFiles/glad.dir/libraries/glad/src/glad.c.o: ../libraries/glad/src/glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/glad.dir/libraries/glad/src/glad.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glad.dir/libraries/glad/src/glad.c.o -c "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glad/src/glad.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/glad.dir/libraries/glad/src/glad.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/glad.dir/libraries/glad/src/glad.c.o -c "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glad/src/glad.c"
 
 CMakeFiles/glad.dir/libraries/glad/src/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/glad.dir/libraries/glad/src/glad.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glad/src/glad.c" > CMakeFiles/glad.dir/libraries/glad/src/glad.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glad/src/glad.c" > CMakeFiles/glad.dir/libraries/glad/src/glad.c.i
 
 CMakeFiles/glad.dir/libraries/glad/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/glad.dir/libraries/glad/src/glad.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glad/src/glad.c" -o CMakeFiles/glad.dir/libraries/glad/src/glad.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glad/src/glad.c" -o CMakeFiles/glad.dir/libraries/glad/src/glad.c.s
 
 # Object files for target glad
 glad_OBJECTS = \
@@ -99,7 +99,7 @@ glad_EXTERNAL_OBJECTS =
 libglad.a: CMakeFiles/glad.dir/libraries/glad/src/glad.c.o
 libglad.a: CMakeFiles/glad.dir/build.make
 libglad.a: CMakeFiles/glad.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libglad.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libglad.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/glad.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glad.dir/link.txt --verbose=$(VERBOSE)
 
@@ -113,6 +113,6 @@ CMakeFiles/glad.dir/clean:
 .PHONY : CMakeFiles/glad.dir/clean
 
 CMakeFiles/glad.dir/depend:
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles/glad.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles/glad.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/glad.dir/depend
 

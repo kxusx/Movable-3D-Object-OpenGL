@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glad/src/glad.c" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles/glad.dir/libraries/glad/src/glad.c.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glad/src/glad.c" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles/glad.dir/libraries/glad/src/glad.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

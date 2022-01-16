@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/src/main.cpp" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles/app.dir/src/main.cpp.o"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/src/main.cpp" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles/app.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
@@ -23,8 +23,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
-  "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles/glad.dir/DependInfo.cmake"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles/glad.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

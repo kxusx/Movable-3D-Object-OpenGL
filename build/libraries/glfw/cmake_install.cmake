@@ -1,4 +1,4 @@
-# Install script for directory: /Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glfw
+# Install script for directory: /Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glfw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw/src/cmake_install.cmake")
+  include("/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw/src/cmake_install.cmake")
 endif()
 

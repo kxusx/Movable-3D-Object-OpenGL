@@ -34,7 +34,7 @@ stdint.h
 inttypes.h
 -
 
-/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/libraries/glad/src/glad.c
+/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/libraries/glad/src/glad.c
 stdio.h
 -
 stdlib.h

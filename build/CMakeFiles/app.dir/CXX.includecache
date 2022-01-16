@@ -904,7 +904,7 @@ detail/type_vec4.hpp
 detail/func_vector_relational.hpp
 ../libraries/glm/glm/detail/func_vector_relational.hpp
 
-/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/src/main.cpp
+/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/src/main.cpp
 GLFW/glfw3.h
 -
 glad/glad.h
@@ -922,7 +922,7 @@ glm/gtc/type_ptr.hpp
 iostream
 -
 camera.h
-/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/src/camera.h
+/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/src/camera.h
 shader.h
-/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/src/shader.h
+/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/src/shader.h
 

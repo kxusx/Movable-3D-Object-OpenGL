@@ -67,10 +67,10 @@ RM = /usr/local/Cellar/cmake/3.19.1/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master"
+CMAKE_SOURCE_DIR = "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build"
+CMAKE_BINARY_DIR = "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,14 +99,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles" "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/libraries/glfw//CMakeFiles/progress.marks"
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build/CMakeFiles" 0
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles" "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/libraries/glfw//CMakeFiles/progress.marks"
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/clean
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/clean
 .PHONY : clean
 
 # The main clean target
@@ -116,17 +116,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/preinstall
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/preinstall
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 libraries/glfw/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -148,6 +148,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/Users/khushpatel/Documents/Computer Graphics/opengl-tut-2-master/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/Users/khushpatel/Documents/Computer Graphics/CG-Assignment0/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
