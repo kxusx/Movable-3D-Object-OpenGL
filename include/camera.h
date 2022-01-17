@@ -28,8 +28,7 @@ class Camera {
 	// constructor with vectors
 	// arguments - camera position, WorldUp vector, yaw, pitch
 	Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f),
-		   glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f))
-		: Front(glm::vec3(0.0f, 0.0f, -1.0f)), Zoom(ZOOM) {
+		   glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f)) : Front(glm::vec3(0.0f, 0.0f, 0.0f)), Zoom(ZOOM) {
 		Position = position;
 		WorldUp = up;
 		Up = glm::vec3(0.0f, 1.0f, 0.0f);

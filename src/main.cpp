@@ -1,8 +1,8 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <chrono>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -12,28 +12,36 @@
 using namespace std;
 #include "camera.h"
 #include "shader.h"
-
+glm::mat4 OBJ_ROTATE = glm::mat4(1.0f);
+int check = 1;
+int rtime,rtime2 ;
 #define pi 3.1415926535897932384626433832795
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void processInput(GLFWwindow *window);
 
+static glm::mat4 transform_t = glm::mat4(1.0f);  // identity matrix
+glm::vec3 object_position = glm::vec3(0.0f,0.0f,0.0f);
+
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 800;
 
+int toggle = 0,toggle2=0;
+
 // camera
-Camera camera(glm::vec3(1.0f, 1.0f, 10.0f));
+Camera camera(glm::vec3(1.0f, 1.0f, 5.0f));
 
 int main() {
 	srand(time(0));
+	rtime = time(0);
+	rtime2 = time(0);
 	// glfw: initialize and configure
-	int num_vertices, c,i,j;
+	int num_vertices, c, i, j;
 	glm::vec3 colorArray[10000];
-	float theta,r=0.5;
+	float theta, r = 0.5;
 	cin >> num_vertices;
 	vector<float> vec_vertices;
-	
 
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -68,198 +76,361 @@ int main() {
 	float k = 0.5;
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 
-	// 	float vertices[] = {
-	//  Top face
-	//         0.0f/k, 0.6f/k, 0.5f*L/k, 1.0, 0.0, 0.0,        // A
-	//         -0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 0.0, 1.0,        // B
-	//         0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 1.0, 0.0,        // C
-	//         // Bottom face
-	//         0.0f/k, 0.6f/k, -0.5f*L/k, 1.0, 0.0, 0.0,        // D
-	//         -0.4f/k, -0.5f/k, -0.5f*L/k, 0.0, 0.0, 1.0,        // E
-	//         0.4f/k, -0.5f/k, -0.5f*L/k, 0.0, 1.0, 0.0,        // F
-	//         // Rectangle ACFD
-	//         0.0f/k, 0.6f/k, 0.5f*L/k, 1.0, 0.0, 0.0,        // A
-	//         0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 1.0, 0.0,        // C
-	//         0.0f/k, 0.6f/k, -0.5f*L/k, 1.0, 0.0, 0.0,        // D
-	//         0.4f/k, -0.5f/k, -0.5f*L/k, 0.0, 1.0, 0.0,        // F
-	//         0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 1.0, 0.0,        // C
-	//         0.0f/k, 0.6f/k, -0.5f*L/k, 1.0, 0.0, 0.0,        // D
-	//         // Rectangle ABED
-	//         0.0f/k, 0.6f/k, 0.5f*L/k, 1.0, 0.0, 0.0,        // A
-	//         -0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 0.0, 1.0,        // B
-	//         0.0f/k, 0.6f/k, -0.5f*L/k, 1.0, 0.0, 0.0,        // D
-	//         0.0f/k, 0.6f/k, -0.5f*L/k, 1.0, 0.0, 0.0,        // D
-	//         -0.4f/k, -0.5f/k, -0.5f*L/k, 0.0, 0.0, 1.0,        // E
-	//         -0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 0.0, 1.0,        // B
-	//         // Rectangle BCFE
-	//         -0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 0.0, 1.0,        // B
-	//         0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 1.0, 0.0,        // C
-	//         -0.4f/k, -0.5f/k, -0.5f*L/k, 0.0, 0.0, 1.0,        // E
-	//         0.4f/k, -0.5f/k, -0.5f*L/k, 0.0, 1.0, 0.0,        // F
-	//         0.4f/k, -0.5f/k, 0.5f*L/k, 0.0, 1.0, 0.0,        // C
-	//         -0.4f/k, -0.5f/k, -0.5f*L/k, 0.0, 0.0, 1.0,        // E
-	// 	};
-
-	float vertices[10000];
 	c = 0;
 	theta = (2 * pi) / num_vertices;
 
-	for (i = 0; i < num_vertices-2; i++) {
-		vec_vertices.push_back(r*cos(theta*0));
-		vec_vertices.push_back(r*sin(theta*0));
+	for (i = 0; i < num_vertices - 2; i++) {
+		vec_vertices.push_back(r * cos(theta * 0));
+		vec_vertices.push_back(r * sin(theta * 0));
 		vec_vertices.push_back(0.5);
+		vec_vertices.push_back(1.0);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(0.0);
 
-		vec_vertices.push_back(r*cos(theta*(i+1)));
-		vec_vertices.push_back(r*sin(theta*(i+1)));
+		vec_vertices.push_back(r * cos(theta * (i + 1)));
+		vec_vertices.push_back(r * sin(theta * (i + 1)));
 		vec_vertices.push_back(0.5);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(1.0);
+		vec_vertices.push_back(0.0);
 
-		vec_vertices.push_back(r*cos(theta*(i+2)));
-		vec_vertices.push_back(r*sin(theta*(i+2)));
+		vec_vertices.push_back(r * cos(theta * (i + 2)));
+		vec_vertices.push_back(r * sin(theta * (i + 2)));
 		vec_vertices.push_back(0.5);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(1.0);
 	}
 
-	for (i = 0; i < num_vertices-2; i++) {
-		vec_vertices.push_back(r*cos(theta*0));
-		vec_vertices.push_back(r*sin(theta*0));
+	for (i = 0; i < num_vertices - 2; i++) {
+		vec_vertices.push_back(r * cos(theta * 0));
+		vec_vertices.push_back(r * sin(theta * 0));
 		vec_vertices.push_back(-0.5);
+		vec_vertices.push_back(1.0);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(0.0);
 
-		vec_vertices.push_back(r*cos(theta*(i+1)));
-		vec_vertices.push_back(r*sin(theta*(i+1)));
+		vec_vertices.push_back(r * cos(theta * (i + 1)));
+		vec_vertices.push_back(r * sin(theta * (i + 1)));
 		vec_vertices.push_back(-0.5);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(1.0);
+		vec_vertices.push_back(0.0);
 
-		vec_vertices.push_back(r*cos(theta*(i+2)));
-		vec_vertices.push_back(r*sin(theta*(i+2)));
+		vec_vertices.push_back(r * cos(theta * (i + 2)));
+		vec_vertices.push_back(r * sin(theta * (i + 2)));
 		vec_vertices.push_back(-0.5);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(0.0);
+		vec_vertices.push_back(1.0);
 	}
 
-	for (i = 0; i < num_vertices-1; i++) {
-		vec_vertices.push_back(r*cos(theta*(i)));
-		vec_vertices.push_back(r*sin(theta*(i)));
-		vec_vertices.push_back(0.5);
+	for (i = 0; i < num_vertices; i++) {
+		if (num_vertices % 2 == 0) {
+			if (i % 2 == 0) {
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
 
-		vec_vertices.push_back(r*cos(theta*(i+1)));
-		vec_vertices.push_back(r*sin(theta*(i+1)));
-		vec_vertices.push_back(0.5);
+				vec_vertices.push_back(r *cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
 
-		vec_vertices.push_back(r*cos(theta*(i+1)));
-		vec_vertices.push_back(r*sin(theta*(i+1)));
-		vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
 
-		vec_vertices.push_back(r*cos(theta*(i)));
-		vec_vertices.push_back(r*sin(theta*(i)));
-		vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
 
-		vec_vertices.push_back(r*cos(theta*(i+1)));
-		vec_vertices.push_back(r*sin(theta*(i+1)));
-		vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
 
-		vec_vertices.push_back(r*cos(theta*(i)));
-		vec_vertices.push_back(r*sin(theta*(i)));
-		vec_vertices.push_back(0.5);
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
+			}
+			if (i % 2 == 1) {
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+			}
+		}else{
+			if (i % 3 == 0) {
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r *cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+			}
+			if (i % 3 == 1) {
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r *cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+				vec_vertices.push_back(0.0);
+			}
+			if (i % 3 == 2) {
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+
+				vec_vertices.push_back(r *cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+
+				vec_vertices.push_back(r * cos(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(r * sin(theta * ((i + 1) % num_vertices)));
+				vec_vertices.push_back(-0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+
+				vec_vertices.push_back(r * cos(theta * (i)));
+				vec_vertices.push_back(r * sin(theta * (i)));
+				vec_vertices.push_back(0.5);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(0.0);
+				vec_vertices.push_back(1.0);
+			}
+
+		}
 	}
 
-	copy(vec_vertices.begin(),vec_vertices.end(),vertices);
+	unsigned int NUM_VERTICES =
+		(num_vertices - 2) * (3) * 2 + 2 * 3 * (num_vertices);
 
-	unsigned int NUM_VERTICES = (num_vertices-2)*3*2 + 2*3*num_vertices;
+	float vertices[1000000];
 
-	for(int k = 0 ; k < num_vertices +2 ; k++){
-		colorArray[k] = glm::vec3((rand()%255)/255.0f, (rand()%255)/255.0f, (rand()%255)/255.0f);
+	copy(vec_vertices.begin(), vec_vertices.end(), vertices);
+	int size = vec_vertices.size();
+
+	for (int k = 0; k < num_vertices + 2; k++) {
+		colorArray[k] =
+			glm::vec3((rand() % 255) / 255.0f, (rand() % 255) / 255.0f,
+					  (rand() % 255) / 255.0f);
 	}
+
+	// for (int l = 0; l < size; l = l + 3) {
+	// 	if (l % 9 == 0)
+	// 		cout << "\n";
+	// 	cout.precision(4);
+	// 	cout << vertices[l] << " " << vertices[l + 1] << " " << vertices[l + 2]
+	// 		 << " \n";
+	// }
 
 	unsigned int VBO, VAO;
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-	// bind the Vertex Array Object first, then bind and set vertex buffer(s),
-	// and then configure vertex attributes(s).
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
 						  (void *)0);
 	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float),
+						  (void *)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 
-
-	// note that this is allowed, the call to glVertexAttribPointer registered
-	// VBO as the vertex attribute's bound vertex buffer object so afterwards we
-	// can safely unbind
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	// You can unbind the VAO afterwards so other VAO calls won't accidentally
-	// modify this VAO, but this rarely happens. Modifying other VAOs requires a
-	// call to glBindVertexArray anyways so we generally don't unbind VAOs (nor
-	// VBOs) when it's not directly necessary.
-	glBindVertexArray(0);
+	glBindVertexArray(VAO);
+
+	// glfw.setKeycallback
 
 	// enable depth testing for 3d
 	glEnable(GL_DEPTH_TEST);
-	int counter=0;
+	int counter = 0;
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
-		// print stuff for better understanding
-		/*
-		printf("\n");
-		printf("Camera Position: %0.3f %0.3f %0.3f\n", camera.Position.x,
-			   camera.Position.y, camera.Position.z);
-		*/
-
 		// input
 		processInput(window);
-
+		
 		// render
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// make transformations
-		glm::mat4 transform = glm::mat4(1.0f);  // identity matrix
-												// Rotation
-		glm::vec3 OBJ_ROTATE = glm::vec3(1.0f, 1.0f, 1.0f);
-		transform = glm::rotate(transform, (float)glfwGetTime(), OBJ_ROTATE);
+		if(toggle){
+			OBJ_ROTATE = glm::rotate(OBJ_ROTATE, glm::radians(1.0f),glm::vec3(0.0f,1.0f,0.0f));
+		}
+		if(toggle2){
+			camera.Position += glm::normalize(glm::cross(camera.Front,camera.Up))*glm::vec3(0.1,0.1,0.1);
+			camera.Front = glm::normalize( object_position - camera.Position);
+		}
 
 		ourShader.use();
-		ourShader.setMat4("transform", transform);
-
-		counter = (num_vertices-2) * 3 * 3 * 2;
-		int p;
-		for(p = 0 ; p <num_vertices; p++){
-			glm::vec3 color = colorArray[p];
-			ourShader.setVec3("khush", color);
-
-			glDrawArrays(GL_TRIANGLES, counter,6);
-			counter+=18;
-		}
-		
-		glm::vec3 color = colorArray[p++];
-		ourShader.setVec3("khush", color);
-		glDrawArrays(GL_TRIANGLES, 0,3*(num_vertices-2));
-
-		color = colorArray[p++];
-		ourShader.setVec3("khush", color);
-		glDrawArrays(GL_TRIANGLES, 18*(num_vertices-2),3*(num_vertices-2));
-		
-
-		
+		ourShader.setMat4("transform", transform_t);
+		ourShader.setMat4("rotate",OBJ_ROTATE);
 
 		// view matrix
-		glm::mat4 view = camera.GetViewMatrix(glm::vec3(0.0f));
+		glm::mat4 view;
+		if(check == 1)
+			view = camera.GetViewMatrix(object_position-camera.Position);
+		else
+			view = camera.GetViewMatrix(glm::vec3(0.0f));
 		ourShader.setMat4("view", view);
 
 		// projection matrix
-		glm::mat4 projection = glm::perspective(
-			glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT,
-			0.1f, 100.0f);
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT,0.1f, 100.0f);
 		ourShader.setMat4("projection", projection);
 
-		glBindVertexArray(VAO);  // seeing as we only have a single VAO there's
-		// no need to bind it every time, but we'll do
-		// so to keep things a bit more organized
-		
-		// glBindVertexArray(0); // no need to unbind it every time
+		glBindVertexArray(VAO); 
 
-		// glfw: swap buffers and poll IO events (keys pressed/released, mouse
-		// moved etc.)
+		glDrawArrays(GL_TRIANGLES, 0, NUM_VERTICES);
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -273,11 +444,119 @@ int main() {
 	return 0;
 }
 
-// process all input: query GLFW whether relevant keys are pressed/released this
-// frame and react accordingly
 void processInput(GLFWwindow *window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS){
+		check = 1;
+		camera.Position += glm::vec3(0, 0, -0.1);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS){
+		check = 1;
+		camera.Position += glm::vec3(0, 0, 0.1);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS){
+		check = 1;
+		camera.Position += glm::vec3(-0.1, 0, 0);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS){
+		check = 1;
+		camera.Position += glm::vec3(0.1, 0, 0);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS){
+		check = 1;
+		camera.Position += glm::vec3(0, 0.1, 0);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS){
+		check = 1;
+		camera.Position += glm::vec3(0, -0.1, 0);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+
+//----------------------
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS){
+		check =2;
+		transform_t = glm::translate(transform_t, glm::vec3(0, 0.1, 0));
+		object_position += glm::vec3(0, 0.1, 0);
+		cout<<object_position.x<<" "<<object_position.y<<" "<<object_position.z<<"\n";
+	}
+	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS){
+		check =2;
+		transform_t = glm::translate(transform_t, glm::vec3(0, -0.1, 0));
+		object_position += glm::vec3(0, -0.1, 0);
+		cout<<object_position.x<<" "<<object_position.y<<" "<<object_position.z<<"\n";
+	}
+	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS){
+		check =2;
+		transform_t = glm::translate(transform_t, glm::vec3(0.1, 0, 0));
+		object_position += glm::vec3(0.1, 0, 0);
+		cout<<object_position.x<<" "<<object_position.y<<" "<<object_position.z<<"\n";
+	}	
+	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS){
+		check =2;
+		transform_t = glm::translate(transform_t, glm::vec3(-0.1, 0, 0));
+		object_position += glm::vec3(-0.1, 0, 0);
+		cout<<object_position.x<<" "<<object_position.y<<" "<<object_position.z<<"\n";
+	}
+	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS){
+		check =2;
+		transform_t = glm::translate(transform_t, glm::vec3(0, 0, 0.1));
+		object_position += glm::vec3(0, 0, 0.1);
+		cout<<object_position.x<<" "<<object_position.y<<" "<<object_position.z<<"\n";
+	}
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS){
+		check =2;
+		transform_t = glm::translate(transform_t, glm::vec3(0, 0, -0.1));
+		object_position += glm::vec3(0, 0, -0.1);
+		cout<<object_position.x<<" "<<object_position.y<<" "<<object_position.z<<"\n";
+	}
+//----------------------
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS){
+		check=1;
+		camera.Position = glm::vec3(2, 2, 2);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+		
+	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS){
+		check=1;
+		camera.Position = glm::vec3(2, -2, 2);
+		camera.Front = glm::normalize(object_position - camera.Position);
+	}
+
+	if(glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS){
+		float min = 0.3;
+		time_t ctime = time(NULL);
+		time_t Difference = ctime - rtime;
+		if(Difference > min){
+			if(toggle){
+				toggle = !toggle;
+			}else{
+				toggle = !toggle;
+			}
+		}
+		rtime = ctime;
+	}
+
+	if(glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS){
+		float min = 0.3;
+		time_t ctime = time(NULL);
+		time_t Difference = ctime - rtime2;
+		if(Difference > min){
+			if(toggle2){
+				toggle2 = !toggle2;
+			}else{
+				toggle2 = !toggle2;
+			}
+		}
+		rtime2 = ctime;
+	}
+				
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback
